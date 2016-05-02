@@ -1,0 +1,18 @@
+Documentation:
+  Enabled: false
+Style/MultilineOperationIndentation:
+  EnforcedStyle: indented
+Rails:
+  Enabled: true
+Style/FrozenStringLiteralComment:
+  Enabled: false
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
+    - Rakefile
+    - !ruby/regexp /old_and_unused\.rb$/
