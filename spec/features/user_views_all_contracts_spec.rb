@@ -28,15 +28,15 @@ feature 'user views all contracts' do
 
     expect(page).to have_content contract.id
     expect(page).to have_content contract.client
-    expect(page).to have_content contract.deadline
+    expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
 
     expect(page).to have_content contract_2.id
     expect(page).to have_content contract_2.client
-    expect(page).to have_content contract_2.deadline
+    expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
 
     expect(page).to have_content contract_3.id
     expect(page).to have_content contract_3.client
-    expect(page).to have_content contract_3.deadline
+    expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
 
 
   end
@@ -66,22 +66,22 @@ feature 'user views all contracts' do
 
     expect(page).to have_content contract.id
     expect(page).to have_content contract.client
-    expect(page).to have_content contract.deadline
+    expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
 
     expect(page).to have_content contract_2.id
     expect(page).to have_content contract_2.client
-    expect(page).to have_content contract_2.deadline
+    expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
 
     expect(page).to have_content contract_3.id
     expect(page).to have_content contract_3.client
-    expect(page).to have_content contract_3.deadline
+    expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
 
     within("tr:nth-child(2)") do
       click_on "Ver detalhes"
     end
 
     expect(page).to have_content contract.responsable
-    expect(page).to have_content contract.deadline
+    expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
     expect(page).to have_content contract.client
     expect(page).to have_content contract.equipments
     expect(page).to have_content contract.amount

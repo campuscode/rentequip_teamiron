@@ -12,7 +12,7 @@ feature 'user views one contract' do
     visit contract_path contract
 
     expect(page).to have_content contract.responsable
-    expect(page).to have_content contract.deadline
+    expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
     expect(page).to have_content contract.client
     expect(page).to have_content contract.equipments
     expect(page).to have_content contract.amount
