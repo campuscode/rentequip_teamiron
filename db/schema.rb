@@ -13,6 +13,17 @@
 
 ActiveRecord::Schema.define(version: 20160503003844) do
 
+  create_table "contracts", force: :cascade do |t|
+    t.string   "responsable"
+    t.datetime "deadline"
+    t.string   "client"
+    t.string   "equipments"
+    t.integer  "amount"
+    t.string   "delivery_address"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
   create_table "equipment", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
