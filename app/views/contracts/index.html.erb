@@ -11,10 +11,9 @@
       <tr>
         <td> <%= contract.id %></td>
         <td> <%= contract.client %></td>
-        <td> <%= contract.deadline %></td>
-        <td> <%= link_to "Ver detalhes" %></td>
+        <td> <%= l contract.deadline, format: :super_short %></td>
+        <td> <%= link_to "Ver detalhes", contract %></td>
       </tr>
     <% end %>
-
   </table>
 </section>

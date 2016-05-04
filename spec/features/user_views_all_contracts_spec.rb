@@ -79,5 +79,14 @@ feature 'user views all contracts' do
     within("tr:nth-child(2)") do
       click_on "Ver detalhes"
     end
+
+    expect(page).to have_content contract.responsable
+    expect(page).to have_content contract.deadline
+    expect(page).to have_content contract.client
+    expect(page).to have_content contract.equipments
+    expect(page).to have_content contract.amount
+    expect(page).to have_content contract.delivery_address
+    expect(page).to have_content contract.created_at
+    expect(page).to have_content contract.id
   end
 end
