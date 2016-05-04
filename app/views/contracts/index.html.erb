@@ -1,0 +1,19 @@
+<section>
+  <h1>Contratos</h1>
+  <table class="table table-striped">
+    <tr>
+      <th>Numero do Contrato</th>
+      <th>Cliente</th>
+      <th>Prazo</th>
+      <th>Detalhes</th>
+    </tr>
+    <% @contracts.each do |contract| %>
+      <tr>
+        <td> <%= contract.id %></td>
+        <td> <%= contract.client %></td>
+        <td> <%= l contract.deadline, format: :super_short %></td>
+        <td> <%= link_to "Ver detalhes", contract %></td>
+      </tr>
+    <% end %>
+  </table>
+</section>
