@@ -10,7 +10,7 @@ require 'rails_helper'
                               description:     'novíssima',
                               supplier:        'Caterpilar')
 
-      visit equipments_path
+      visit equipment_index_path
 
       expect(page).to have_content equipment.name
       expect(page).to have_content equipment.description

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :equipments, only: [:index]
+  resources :equipment, only: [:index]
   resources :contracts, only: [:show]
 
   # The priority is based upon order of creation: first created -> highest priority.
