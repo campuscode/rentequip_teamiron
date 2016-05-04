@@ -1,0 +1,27 @@
+<section id="equipments">
+  <h1> Lista de Equipamentos </h1>
+
+<% @equipments.each do |equipment| %>
+
+  <p>
+    <strong> Número do equipamento: </strong>
+    <%= @equipment.id %>
+  </p>
+
+  <p>
+    <strong> Tipo de equipamento: </strong>
+    <%= @equipment.name %>
+  </p>
+
+  <p>
+    <strong> Fornecedor: </strong>
+    <%= @contract.supplier %>
+  </p>
+
+  <p>
+    <strong> Descrição do equipamento: </strong>
+    <%= @equipment.description %>
+  </p>
+
+<%end%>
+</section>
