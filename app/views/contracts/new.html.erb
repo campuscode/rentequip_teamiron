@@ -1,0 +1,8 @@
+<%= simple_form_for @contract do |f| %>
+  <%= f.input :responsable, label: 'Responsável' %>
+  <%= f.input :deadline, label: 'Prazo' %>
+  <%= f.input :client, label: 'Cliente' %>
+  <%= f.input :amount, label: 'Valor do Contrato' %>
+  <%= f.input :delivery_address, label: 'Endereço de Entrega' %>
+  <%= f.button :submit %>
+<% end %>
