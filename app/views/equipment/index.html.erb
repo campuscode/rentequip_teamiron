@@ -1,27 +1,19 @@
-<section id="equipments">
-  <h1> Lista de Equipamentos </h1>
-
-<% @equipment.each do |equipment| %>
-
-  <p>
-    <strong> Número do equipamento: </strong>
-    <%= equipment.id %>
-  </p>
-
-  <p>
-    <strong> Tipo de equipamento: </strong>
-    <%= equipment.name %>
-  </p>
-
-  <p>
-    <strong> Fornecedor: </strong>
-    <%= equipment.supplier%>
-  </p>
-
-  <p>
-    <strong> Descrição do equipamento: </strong>
-    <%= equipment.description %>
-  </p>
-
-<%end%>
+<section>
+  <h1>Equipamentos</h1>
+  <table class="table table-striped">
+    <tr>
+      <th>Número do equipamento:</th>
+      <th>Tipo de equipamento:</th>
+      <th>Fornecedor:</th>
+      <th>Descrição do equipamento:</th>
+    </tr>
+    <% @equipment.each do |equipment| %>
+      <tr>
+        <td> <%= equipment.id %></td>
+        <td> <%= equipment.name %></td>
+        <td> <%= equipment.supplier %></td>
+        <td> <%= equipment.description %></td>
+      </tr>
+    <% end %>
+  </table>
 </section>
