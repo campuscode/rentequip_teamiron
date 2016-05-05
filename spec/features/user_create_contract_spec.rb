@@ -10,7 +10,6 @@ feature 'user create contract' do
     contract = Contract.new(responsable: 'Luiz',
                             deadline: 5.days.from_now,
                             client: 'MVR Engenharia',
-                            equipments: equipment,
                             amount: 1000000,
                             delivery_address: 'Av. Paulista 9876')
 
@@ -28,7 +27,7 @@ feature 'user create contract' do
     expect(page).to have_content contract.responsable
     expect(page).to have_content contract.deadline
     expect(page).to have_content contract.client
-    expect(page).to have_content contract.equipments
+    expect(page).to have_content equipment.name
     expect(page).to have_content contract.amount
     expect(page).to have_content contract.delivery_address
   end
