@@ -1,24 +1,22 @@
 require 'rails_helper'
-  feature 'user views equipments' do
-  scenario 'successfull'  do
+feature 'user views equipments' do
+  scenario 'successfull' do
+    equipment = Equipment.create(name: 'Betoneira',
+                                 description: 'Semi-nova',
+                                 supplier: 'Bosh')
 
-  equipment = Equipment.create(name:          'Betoneira',
-                              description:    'Semi-nova',
-                              supplier:       'Bosh')
+    equipment1 = Equipment.create(name: 'furadeira',
+                                  description: 'novíssima',
+                                  supplier: 'Caterpilar')
 
-  equipment1 = Equipment.create(name:          'furadeira',
-                              description:     'novíssima',
-                              supplier:        'Caterpilar')
+    visit equipment_index_path
 
-      visit equipment_index_path
+    expect(page).to have_content equipment.name
+    expect(page).to have_content equipment.description
+    expect(page).to have_content equipment.supplier
 
-      expect(page).to have_content equipment.name
-      expect(page).to have_content equipment.description
-      expect(page).to have_content equipment.supplier
-
-      expect(page).to have_content equipment1.name
-      expect(page).to have_content equipment1.description
-      expect(page).to have_content equipment1.supplier
-
-    end
+    expect(page).to have_content equipment1.name
+    expect(page).to have_content equipment1.description
+    expect(page).to have_content equipment1.supplier
   end
+end
