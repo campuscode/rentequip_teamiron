@@ -15,7 +15,9 @@
   </p>
   <p>
     <strong> Equipamentos: </strong>
-    <%= @contract.equipments %>
+    <% @contract.equipment.each do |equipment| %>
+      ---------<%= equipment.name%>
+    <% end %>
   </p>
   <p>
     <strong> Valor Total: </strong>

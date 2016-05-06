@@ -2,8 +2,8 @@
   <%= f.input :responsable, label: 'Responsável' %>
   <%= f.input :deadline, label: 'Prazo', as: :text %>
   <%= f.input :client, label: 'Cliente' %>
-  <%= f.input :equipment, label: 'Equipamentos' %>
+  <%= f.association :equipment, label: 'Equipamentos', as: :check_boxes %>
   <%= f.input :amount, label: 'Valor do Contrato' %>
   <%= f.input :delivery_address, label: 'Endereço de Entrega' %>
-  <%= f.button :submit %>
+  <%= f.submit 'Emitir Contrato' %>
 <% end %>
