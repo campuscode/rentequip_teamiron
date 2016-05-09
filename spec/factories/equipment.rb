@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :equipment do
-    name 'MyString'
-    description 'MyString'
-    supplier 'MyString'
+    name 'Furadeira'
+    description 'Alta velocidade'
+    supplier 'Bosch'
   end
 end

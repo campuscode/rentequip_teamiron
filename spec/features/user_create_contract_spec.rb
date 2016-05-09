@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'user create contract' do
-
   scenario 'successfully' do
     equipment = Equipment.create(name: 'Furadeira',
                                  description: 'Auto Impacto',
@@ -10,7 +9,7 @@ feature 'user create contract' do
     contract = Contract.new(responsable: 'Luiz',
                             deadline: 5.days.from_now,
                             client: 'MVR Engenharia',
-                            amount: 1000000,
+                            amount: 1_000_000,
                             delivery_address: 'Av. Paulista 9876')
 
     visit new_contract_path

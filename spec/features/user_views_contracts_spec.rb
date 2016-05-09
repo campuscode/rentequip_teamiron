@@ -2,8 +2,8 @@ require 'rails_helper'
 feature 'user views one contract' do
   scenario 'successfully' do
     equipment1 = Equipment.create(name: 'Furadeira',
-                                 description: 'Auto Impacto',
-                                 supplier: 'Bosh')
+                                  description: 'Auto Impacto',
+                                  supplier: 'Bosh')
 
     equipment2 = Equipment.create(name: 'Martelo',
                                   description: 'Auto Impacto',

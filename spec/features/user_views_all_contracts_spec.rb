@@ -23,14 +23,10 @@ feature 'user views all contracts' do
     expect(page).to have_content contract_3.id
     expect(page).to have_content contract_3.client
     expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
-
   end
 
   scenario 'user clic on the contract' do
-    equipment1 = Equipment.create(name: 'Furadeira',
-                                 description: 'Auto Impacto',
-                                 supplier: 'Bosh')
-
+    equipment1 = create(:equipment)
     contract = Contract.create(responsable: 'Luiz',
                                deadline: 5.days.from_now,
                                client: 'MVR Engenharia',
@@ -38,11 +34,9 @@ feature 'user views all contracts' do
                                amount: 1_000_000,
                                delivery_address: 'Av. Paulista 9876')
 
-    contract_2 = Contract.create(deadline: 20.days.from_now,
-                                 client: 'MVR Engenharia 2')
+    Contract.create(deadline: 20.days.from_now, client: 'MVR Engenharia 2')
 
-    contract_3 = Contract.create(deadline: 30.days.from_now,
-                                 client: 'MVR Engenharia 2')
+    Contract.create(deadline: 30.days.from_now, client: 'MVR Engenharia 2')
 
     visit contracts_path
 
