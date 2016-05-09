@@ -1,20 +1,11 @@
 require 'rails_helper'
 feature 'user views one contract' do
   scenario 'successfully' do
-    equipment1 = Equipment.create(name: 'Furadeira',
-                                  description: 'Auto Impacto',
-                                  supplier: 'Bosh')
+    equipment1 = create(:equipment)
 
-    equipment2 = Equipment.create(name: 'Martelo',
-                                  description: 'Auto Impacto',
-                                  supplier: 'Bosh')
+    equipment2 = create(:equipment, name: 'Martelo')
 
-    contract = Contract.create(responsable: 'Luiz',
-                               deadline: 5.days.from_now,
-                               client: 'MVR Engenharia',
-                               equipment: [equipment1, equipment2],
-                               amount: 1_000_000,
-                               delivery_address: 'Av. Paulista')
+    contract = create(:contract, equipment: [equipment1, equipment2])
 
     visit contract_path contract
 

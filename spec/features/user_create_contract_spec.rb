@@ -2,9 +2,7 @@ require 'rails_helper'
 
 feature 'user create contract' do
   scenario 'successfully' do
-    equipment = Equipment.create(name: 'Furadeira',
-                                 description: 'Auto Impacto',
-                                 supplier: 'Bosh')
+    equipment = create(:equipment)
 
     contract = Contract.new(responsable: 'Luiz',
                             deadline: 5.days.from_now,

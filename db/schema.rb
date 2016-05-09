@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160506004455) do
+ActiveRecord::Schema.define(version: 20160509233617) do
 
   create_table "contracts", force: :cascade do |t|
     t.string   "responsable"
     t.datetime "deadline"
     t.string   "client"
-    t.string   "equipments"
     t.integer  "amount"
     t.string   "delivery_address"
     t.datetime "created_at",       null: false
