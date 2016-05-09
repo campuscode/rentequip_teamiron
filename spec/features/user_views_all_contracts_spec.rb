@@ -1,28 +1,14 @@
 require 'rails_helper'
 feature 'user views all contracts' do
   scenario 'successfully' do
-    contract = Contract.create(responsable: 'Luiz',
-                               deadline: 5.days.from_now,
-                               client: 'MVR Engenharia',
-                               equipments: 'Furadeira, empilhadeira',
-                               amount: 1_000_000,
-                               delivery_address: 'Av. Paulista 9876')
+    contract = Contract.create(deadline: 5.days.from_now,
+                               client: 'MVR Engenharia')
 
-    contract_2 = Contract.create(responsable: 'Raul',
-                                 deadline: 20.days.from_now,
-                                 client: 'MVR Engenharia 2',
-                                 equipments:
-                                 'Furadeira, empilhadeira, martelos',
-                                 amount: 5_000_000,
-                                 delivery_address:
-                                 'Av. Brigadeiro Luiz Antonio 2020')
+    contract_2 = Contract.create(deadline: 20.days.from_now,
+                                 client: 'MVR Engenharia 2')
 
-    contract_3 = Contract.create(responsable: 'Jonas',
-                                 deadline: 30.days.from_now,
-                                 client: 'MVR Engenharia 2',
-                                 equipments: 'Furadeira, empilhadeira',
-                                 amount: 2_000_000,
-                                 delivery_address: 'Av. Paulista 1234')
+    contract_3 = Contract.create(deadline: 30.days.from_now,
+                                 client: 'MVR Engenharia 2')
 
     visit contracts_path
 
@@ -41,42 +27,24 @@ feature 'user views all contracts' do
   end
 
   scenario 'user clic on the contract' do
+    equipment1 = Equipment.create(name: 'Furadeira',
+                                 description: 'Auto Impacto',
+                                 supplier: 'Bosh')
+
     contract = Contract.create(responsable: 'Luiz',
                                deadline: 5.days.from_now,
                                client: 'MVR Engenharia',
-                               equipments: 'Furadeira, empilhadeira',
+                               equipment: [equipment1],
                                amount: 1_000_000,
                                delivery_address: 'Av. Paulista 9876')
 
-    contract_2 = Contract.create(responsable: 'Raul',
-                                 deadline: 20.days.from_now,
-                                 client: 'MVR Engenharia 2',
-                                 equipments:
-                                 'Furadeira, empilhadeira, martelos',
-                                 amount: 5_000_000,
-                                 delivery_address:
-                                 'Av. Brigadeiro Luiz Antonio 2020')
+    contract_2 = Contract.create(deadline: 20.days.from_now,
+                                 client: 'MVR Engenharia 2')
 
-    contract_3 = Contract.create(responsable: 'Jonas',
-                                 deadline: 30.days.from_now,
-                                 client: 'MVR Engenharia 2',
-                                 equipments: 'Furadeira, empilhadeira',
-                                 amount: 2_000_000,
-                                 delivery_address: 'Av. Paulista 1234')
+    contract_3 = Contract.create(deadline: 30.days.from_now,
+                                 client: 'MVR Engenharia 2')
 
     visit contracts_path
-
-    expect(page).to have_content contract.id
-    expect(page).to have_content contract.client
-    expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
-
-    expect(page).to have_content contract_2.id
-    expect(page).to have_content contract_2.client
-    expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
-
-    expect(page).to have_content contract_3.id
-    expect(page).to have_content contract_3.client
-    expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
 
     within('tr:nth-child(2)') do
       click_on 'Ver detalhes'
@@ -85,7 +53,7 @@ feature 'user views all contracts' do
     expect(page).to have_content contract.responsable
     expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
     expect(page).to have_content contract.client
-    expect(page).to have_content contract.equipments
+    expect(page).to have_content contract.equipment.find(1).name
     expect(page).to have_content contract.amount
     expect(page).to have_content contract.delivery_address
     expect(page).to have_content contract.created_at
