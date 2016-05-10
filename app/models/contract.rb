@@ -1,3 +1,3 @@
 class Contract < ActiveRecord::Base
-  has_many :equipment
+  has_and_belongs_to_many :equipment
 end

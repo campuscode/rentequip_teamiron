@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509233617) do
+ActiveRecord::Schema.define(version: 20160510004510) do
 
   create_table "contracts", force: :cascade do |t|
     t.string   "responsable"
@@ -21,10 +21,15 @@ ActiveRecord::Schema.define(version: 20160509233617) do
     t.string   "delivery_address"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.integer  "equipment_id"
   end
 
-  add_index "contracts", ["equipment_id"], name: "index_contracts_on_equipment_id"
+  create_table "contracts_equipment", id: false, force: :cascade do |t|
+    t.integer "contract_id",  null: false
+    t.integer "equipment_id", null: false
+  end
+
+  add_index "contracts_equipment", ["contract_id"], name: "index_contracts_equipment_on_contract_id"
+  add_index "contracts_equipment", ["equipment_id"], name: "index_contracts_equipment_on_equipment_id"
 
   create_table "equipment", force: :cascade do |t|
     t.string   "name"
@@ -32,9 +37,6 @@ ActiveRecord::Schema.define(version: 20160509233617) do
     t.string   "supplier"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "contract_id"
   end
-
-  add_index "equipment", ["contract_id"], name: "index_equipment_on_contract_id"
 
 end

@@ -28,4 +28,17 @@ feature 'user create contract' do
     expect(page).to have_content contract.amount
     expect(page).to have_content contract.delivery_address
   end
+
+  scenario 'users create second contract with same equipment from frist' do
+    equipment = create(:equipment)
+
+    contract = create(:contract, equipment: [equipment])
+    contract2 = create(:contract, equipment: [equipment])
+
+    visit contract_path(contract)
+    expect(page).to have_content equipment.name
+
+    visit contract_path(contract2)
+    expect(page).to have_content equipment.name
+  end
 end
