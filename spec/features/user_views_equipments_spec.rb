@@ -18,6 +18,6 @@ feature 'user views equipments' do
   scenario 'no equipment available' do
     visit equipment_index_path
 
-    expect(page).to have_content 'Nenhum equipamento dispononível no momento.'
+    expect(page).to have_content 'Nenhum equipamento disponível no momento.'
   end
 end

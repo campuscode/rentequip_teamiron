@@ -1,10 +1,8 @@
 <section>
   <h1>Equipamentos</h1>
-  <%= @equipment.empty_message %>
 
-
-  <% if @equipment.empty? %>
-      <p>Nenhum equipamento dispononível no momento.</p>
+  <% if @equipment.empty?%>
+    <p>Nenhum equipamento disponível no momento.</p>
   <% else %>
     <table class="table table-striped">
       <tr>
@@ -20,7 +18,7 @@
           <td> <%= equipment.supplier %></td>
           <td> <%= equipment.description %></td>
         </tr>
-        <% end %>
-      </table>
-    <% end %>
-  </section>
+      <% end %>
+    </table>
+  <% end %>
+</section>

@@ -1,5 +1,5 @@
 class EquipmentController < ApplicationController
   def index
-    @equipment = EquipmentPresenter.new(Equipment.all)
+    @equipment = Equipment.all
   end
 end
