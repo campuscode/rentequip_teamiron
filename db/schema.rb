@@ -39,4 +39,12 @@ ActiveRecord::Schema.define(version: 20160510004510) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "prices", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "duration"
+    t.float    "total_value"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
 end

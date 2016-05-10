@@ -1,0 +1,23 @@
+<section>
+  <% if @price.empty?%>
+    <h1>Tabela não carregada, tente recarregar a página</h1>
+  <% else %>
+  <h1>Tabela de Preços</h1>
+    <table class="table table-striped">
+      <tr>
+        <th>Número do equipamento:</th>
+        <th>Tipo de equipamento:</th>
+        <th>Duração:</th>
+        <th>Preço total:</th>
+      </tr>
+      <% @price.each do |price| %>
+        <tr>
+          <td> <%= price.id %></td>
+          <td> <%= price.name %></td>
+          <td> <%= price.duration %></td>
+          <td> <%= price.total_value %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</section>
