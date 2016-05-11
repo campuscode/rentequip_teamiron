@@ -1,3 +1,6 @@
+<% if flash[:error] %>
+  <span class="error_message"><%= flash[:error] %></span>
+<% end %>
 <%= simple_form_for @contract do |f| %>
   <%= f.input :responsable, label: 'Responsável' %>
   <%= f.input :deadline, label: 'Prazo', as: :text %>

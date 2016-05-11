@@ -1,14 +1,10 @@
 require 'rails_helper'
 
-feature 'user create contract' do
+feature 'users create contract' do
   scenario 'successfully' do
     equipment = create(:equipment)
 
-    contract = Contract.new(responsable: 'Luiz',
-                            deadline: 5.days.from_now,
-                            client: 'MVR Engenharia',
-                            amount: 1_000_000,
-                            delivery_address: 'Av. Paulista 9876')
+    contract = build(:contract)
 
     visit new_contract_path
 
@@ -40,5 +36,13 @@ feature 'user create contract' do
 
     visit contract_path(contract2)
     expect(page).to have_content equipment.name
+  end
+
+  scenario 'users create blank contract' do
+    visit new_contract_path
+
+    click_on 'Emitir Contrato'
+
+    expect(page).to have_content 'Favor preencher os campos obrigatórios'
   end
 end

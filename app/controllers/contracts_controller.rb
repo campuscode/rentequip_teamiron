@@ -12,9 +12,13 @@ class ContractsController < ApplicationController
   end
 
   def create
-    @contract = Contract.new(params_contract)
-    @contract.save
-    redirect_to @contract
+    @contract = Contract.create(params_contract)
+    if @contract.persisted?
+      redirect_to contract_path(@contract)
+    else
+      flash[:error] = 'Favor preencher os campos obrigatórios'  
+      redirect_to new_contract_path
+    end
   end
 
   private
