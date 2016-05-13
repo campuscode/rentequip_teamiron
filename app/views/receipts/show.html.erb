@@ -1,0 +1,17 @@
+<h1>Recibo de Entrega</h1>
+<p>
+Eu, <%= @receipt.contract.responsable %> , em nome da empresa
+<%= @receipt.contract.client.name %>, inscrita no CNPJ
+<%= @receipt.contract.client.cnpj %> declaro ter recebido os equipamentos
+<% @receipt.contract.equipment.each do |equipment|  %>
+  <%= equipment.name %>
+  <%= equipment.serial_number %>
+<% end %>
+pelo período de <%= @receipt.contract.rental_period %>
+em perfeitas condições de uso no endereço
+<%= @receipt.contract.delivery_address %>
+de acordo com o contrato <%= @receipt.contract.id %>
+</p>
+
+_____________________________
+Assinatura do Responsável

@@ -15,9 +15,11 @@
   </p>
   <p>
     <strong> Equipamentos: </strong>
-    <% @contract.equipment.each do |equipment| %>
-      ---------<%= equipment.name%>
-    <% end %>
+    <ul>
+      <% @contract.equipment.each do |equipment| %>
+        <li><%= equipment.name%></li>
+      <% end %>
+    </ul>
   </p>
   <p>
     <strong> Valor Total: </strong>
@@ -31,4 +33,8 @@
     <strong> Data de Criação: </strong>
     <%= @contract.created_at %>
   </p>
+</section>
+<section>
+  <%= link_to 'Emitir Recibo de Entrega', contract_receipts_path(@contract),
+       method: :post %>
 </section>

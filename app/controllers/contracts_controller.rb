@@ -1,6 +1,6 @@
 class ContractsController < ApplicationController
   def show
-    @contract = Contract.find(params[:id])
+    @contract = Contract.find(params[:id])    
   end
 
   def index
@@ -16,7 +16,7 @@ class ContractsController < ApplicationController
     if @contract.persisted?
       redirect_to contract_path(@contract)
     else
-      flash[:error] = 'Favor preencher os campos obrigatórios'  
+      flash[:error] = 'Favor preencher os campos obrigatórios'
       redirect_to new_contract_path
     end
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512010734) do
+ActiveRecord::Schema.define(version: 20160513004829) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "name"
@@ -23,12 +23,14 @@ ActiveRecord::Schema.define(version: 20160512010734) do
   create_table "contracts", force: :cascade do |t|
     t.string   "responsable"
     t.datetime "deadline"
-    t.string   "client"
     t.integer  "amount"
     t.string   "delivery_address"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "client_id"
   end
+
+  add_index "contracts", ["client_id"], name: "index_contracts_on_client_id"
 
   create_table "contracts_equipment", id: false, force: :cascade do |t|
     t.integer "contract_id",  null: false
@@ -42,8 +44,9 @@ ActiveRecord::Schema.define(version: 20160512010734) do
     t.string   "name"
     t.string   "description"
     t.string   "supplier"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "serial_number"
   end
 
   create_table "prices", force: :cascade do |t|
@@ -53,5 +56,13 @@ ActiveRecord::Schema.define(version: 20160512010734) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "receipts", force: :cascade do |t|
+    t.integer  "contract_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "receipts", ["contract_id"], name: "index_receipts_on_contract_id"
 
 end
