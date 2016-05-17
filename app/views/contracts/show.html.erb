@@ -14,6 +14,10 @@
     <%= @contract.customer.name %>
   </p>
   <p>
+    <strong> Duração: </strong>
+    <%= @contract.rental_period %>
+  </p>
+  <p>
     <strong> Equipamentos: </strong>
     <ul>
       <% @contract.equipment.each do |equipment| %>

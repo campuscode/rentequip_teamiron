@@ -2,15 +2,17 @@ require 'rails_helper'
 feature 'user views all contracts' do
   scenario 'successfully' do
 
+    equipment = create(:equipment)
+
     customer = create(:customer, name: 'Tenda')
     customer2 = create(:customer, name: 'Tenda2')
     customer3 = create(:customer, name: 'Tenda3')
 
-    contract = create(:contract, customer: customer )
+    contract = create(:contract, customer: customer, equipment: [equipment])
 
-    contract_2 = create(:contract, customer: customer2)
+    contract_2 = create(:contract, customer: customer2, equipment: [equipment])
 
-    contract_3 = create(:contract, customer: customer3)
+    contract_3 = create(:contract, customer: customer3, equipment: [equipment])
 
     visit contracts_path
 
@@ -35,9 +37,9 @@ feature 'user views all contracts' do
 
     contract = create(:contract, equipment: [equipment1])
 
-    Contract.create(deadline: 20.days.from_now, customer: customer)
+    Contract.create(rental_period: 3, customer: customer)
 
-    Contract.create(deadline: 30.days.from_now, customer: customer)
+    Contract.create(rental_period: 7, customer: customer)
 
     visit contracts_path
 

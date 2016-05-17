@@ -15,12 +15,12 @@ ActiveRecord::Schema.define(version: 20160517005020) do
 
   create_table "contracts", force: :cascade do |t|
     t.string   "responsable"
-    t.datetime "deadline"
     t.integer  "amount"
     t.string   "delivery_address"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "customer_id"
+    t.integer  "rental_period"
   end
 
   add_index "contracts", ["customer_id"], name: "index_contracts_on_customer_id"
