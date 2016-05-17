@@ -1,6 +1,6 @@
 class Contract < ActiveRecord::Base
   has_and_belongs_to_many :equipment
-  belongs_to :client
+  belongs_to :customer
   validates :deadline, presence: true
 
   #TODO remove this method when merge with Leonardo's code

@@ -4,7 +4,7 @@
 <%= simple_form_for @contract do |f| %>
   <%= f.input :responsable, label: 'Responsável' %>
   <%= f.input :deadline, label: 'Prazo', as: :text %>
-  <%= f.input :client, label: 'Cliente' %>
+  <%= f.association :customer, label: 'Cliente' %>
   <%= f.association :equipment, label: 'Equipamentos', as: :check_boxes %>
   <%= f.input :amount, label: 'Valor do Contrato' %>
   <%= f.input :delivery_address, label: 'Endereço de Entrega' %>

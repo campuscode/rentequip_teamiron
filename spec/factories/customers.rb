@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :client do
+  factory :customer do
     name "Client MRV from factory"
     cnpj "012380/1001-99"
   end

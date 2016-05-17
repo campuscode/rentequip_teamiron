@@ -3,14 +3,14 @@
   <table class="table table-striped">
     <tr>
       <th>Numero do Contrato</th>
-      <th>Cliente</th>
+      <th>customere</th>
       <th>Prazo</th>
       <th>Detalhes</th>
     </tr>
     <% @contracts.each do |contract| %>
       <tr>
         <td> <%= contract.id %></td>
-        <td> <%= contract.client %></td>
+        <td> <%= contract.customer.name %></td>
         <% if contract.deadline %>
           <td> <%= l contract.deadline, format: :super_short %></td>
         <% else %>
