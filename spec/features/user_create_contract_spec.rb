@@ -8,9 +8,9 @@ feature 'users create contract' do
 
     visit new_contract_path
 
-    fill_in 'Responsável',           with: contract.responsable
-    fill_in 'Prazo',                 with: contract.deadline
-    fill_in 'Cliente',               with: contract.client
+    fill_in 'Responsável', with: contract.responsable
+    select 3, from: 'Duração'
+    fill_in 'Cliente', with: contract.client
     check equipment.name
     fill_in 'Valor do Contrato',     with: contract.amount
     fill_in 'Endereço de Entrega',   with: contract.delivery_address
@@ -18,6 +18,7 @@ feature 'users create contract' do
     click_on 'Emitir Contrato'
 
     expect(page).to have_content contract.responsable
+    expect(page).to have_content contract.rental_period
     expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
     expect(page).to have_content contract.client
     expect(page).to have_content equipment.name

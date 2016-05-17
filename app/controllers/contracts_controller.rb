@@ -16,15 +16,15 @@ class ContractsController < ApplicationController
     if @contract.persisted?
       redirect_to contract_path(@contract)
     else
-      flash[:error] = 'Favor preencher os campos obrigatórios'  
-      redirect_to new_contract_path
+      flash[:error] = 'Favor preencher os campos obrigatórios'
+      render :new
     end
   end
 
   private
 
   def params_contract
-    params.require(:contract).permit(:responsable, :client, :deadline,
+    params.require(:contract).permit(:responsable, :client, :rental_period,
                                      :amount, :delivery_address,
                                      equipment_ids: [])
   end

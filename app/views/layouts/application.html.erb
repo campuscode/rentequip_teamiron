@@ -9,6 +9,21 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <nav class='navbar navbar-inverse'>
+      <div class='container-fluid'>
+        <div class='navbar-header title-logo'>
+          <%= link_to 'Rentequip', root_path %>
+        </div>
+        <div class='collapse navbar-collapse'>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'Contratos', contracts_path %> </li>
+            <li><%= link_to 'Equipamentos',equipment_index_path %> </li>
+            <li><%= link_to 'Preços', prices_path %> </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <div class="container">
       <%= yield %>
     </div>
