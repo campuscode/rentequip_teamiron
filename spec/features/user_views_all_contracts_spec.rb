@@ -1,7 +1,6 @@
 require 'rails_helper'
 feature 'user views all contracts' do
   scenario 'successfully' do
-
     equipment = create(:equipment)
 
     customer = create(:customer, name: 'Tenda')
@@ -30,7 +29,6 @@ feature 'user views all contracts' do
   end
 
   scenario 'user clic on the contract' do
-
     customer = create(:customer)
 
     equipment1 = create(:equipment)

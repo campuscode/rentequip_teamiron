@@ -8,7 +8,7 @@ feature 'users create receipt' do
     customer = create(:customer)
 
     contract = create(:contract, customer: customer,
-                       equipment: [equipment1, equipment2])
+                                 equipment: [equipment1, equipment2])
 
     visit contract_path(contract)
 
@@ -34,7 +34,7 @@ feature 'users create receipt' do
     customer = create(:customer)
 
     contract = create(:contract, customer: customer,
-                       equipment: [equipment1, equipment2])
+                                 equipment: [equipment1, equipment2])
 
     visit contract_path(contract)
 
@@ -42,7 +42,8 @@ feature 'users create receipt' do
 
     visit contract_path(contract)
 
-    expect{click_on 'Emitir Recibo de Entrega'}.to_not change{Receipt.count}
-
+    expect { click_on 'Emitir Recibo de Entrega' }.to_not change {
+      Receipt.count
+    }
   end
 end
