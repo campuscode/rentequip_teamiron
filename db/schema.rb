@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160517005020) do
+ActiveRecord::Schema.define(version: 20160518000452) do
 
   create_table "contracts", force: :cascade do |t|
     t.string   "responsable"
@@ -19,11 +19,13 @@ ActiveRecord::Schema.define(version: 20160517005020) do
     t.string   "delivery_address"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.integer  "customer_id"
     t.integer  "rental_period"
+    t.integer  "customer_id"
+    t.integer  "receipt_id"
   end
 
   add_index "contracts", ["customer_id"], name: "index_contracts_on_customer_id"
+  add_index "contracts", ["receipt_id"], name: "index_contracts_on_receipt_id"
 
   create_table "contracts_equipment", id: false, force: :cascade do |t|
     t.integer "contract_id",  null: false

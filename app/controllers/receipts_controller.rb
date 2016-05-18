@@ -1,7 +1,7 @@
 class ReceiptsController < ApplicationController
   def create
     @contract = Contract.find(params[:contract_id])
-    @receipt = Receipt.create(contract: @contract)
+    @receipt = @contract.receipt || Receipt.create(contract: @contract)
     redirect_to [@contract, @receipt]
   end
 
