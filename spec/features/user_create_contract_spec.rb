@@ -14,6 +14,7 @@ feature 'users create contract' do
     check equipment.name
     fill_in 'Valor do Contrato',     with: contract.amount
     fill_in 'Endereço de Entrega',   with: contract.delivery_address
+    fill_in 'Data de início',        with: contract.started_at
 
     click_on 'Emitir Contrato'
 
@@ -26,7 +27,7 @@ feature 'users create contract' do
     expect(page).to have_content contract.delivery_address
   end
 
-  scenario 'users create second contract with same equipment from frist' do
+  scenario 'users create second contract with same equipment from first' do
     equipment = create(:equipment)
 
     contract = create(:contract, equipment: [equipment])

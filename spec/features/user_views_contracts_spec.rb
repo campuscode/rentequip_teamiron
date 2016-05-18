@@ -16,7 +16,7 @@ feature 'user views one contract' do
     expect(page).to have_content contract.equipment.find(2).name
     expect(page).to have_content contract.amount
     expect(page).to have_content contract.delivery_address
-    expect(page).to have_content contract.created_at
+    expect(page).to have_content I18n.l(contract.started_at, format: :long)
     expect(page).to have_content contract.id
   end
 end

@@ -32,7 +32,7 @@
     <%= @contract.delivery_address %>
   </p>
   <p>
-    <strong> Data de Criação: </strong>
-    <%= @contract.created_at %>
+    <strong> Data de Início: </strong>
+    <%= l @contract.started_at, format: :long %>
   </p>
 </section>
