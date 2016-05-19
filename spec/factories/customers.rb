@@ -6,6 +6,5 @@ FactoryGirl.define do
     tel '12345679'
     contact_email 'something@from.factory'
     billing_address 'Av. Paulista 2020 - Factory'
-
   end
 end
