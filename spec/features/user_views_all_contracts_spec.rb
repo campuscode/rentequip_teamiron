@@ -3,9 +3,9 @@ feature 'user views all contracts' do
   scenario 'successfully' do
     equipment = create(:equipment)
 
-    customer = create(:customer, name: 'Tenda')
-    customer2 = create(:customer, name: 'Tenda2')
-    customer3 = create(:customer, name: 'Tenda3')
+    customer = create(:customer, company_name: 'Tenda')
+    customer2 = create(:customer, company_name: 'Tenda2')
+    customer3 = create(:customer, company_name: 'Tenda3')
 
     contract = create(:contract, customer: customer, equipment: [equipment])
 
@@ -16,15 +16,15 @@ feature 'user views all contracts' do
     visit contracts_path
 
     expect(page).to have_content contract.id
-    expect(page).to have_content contract.customer.name
+    expect(page).to have_content contract.customer.company_name
     expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
 
     expect(page).to have_content contract_2.id
-    expect(page).to have_content contract_2.customer.name
+    expect(page).to have_content contract_2.customer.company_name
     expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
 
     expect(page).to have_content contract_3.id
-    expect(page).to have_content contract_3.customer.name
+    expect(page).to have_content contract_3.customer.company_name
     expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
   end
 
@@ -47,7 +47,7 @@ feature 'user views all contracts' do
 
     expect(page).to have_content contract.responsable
     expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
-    expect(page).to have_content contract.customer.name
+    expect(page).to have_content contract.customer.company_name
     expect(page).to have_content contract.equipment.find(1).name
     expect(page).to have_content contract.amount
     expect(page).to have_content contract.delivery_address

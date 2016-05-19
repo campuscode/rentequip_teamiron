@@ -1,7 +1,7 @@
 <h1>Recibo de Entrega</h1>
 <p>
 Eu, <strong><%= @receipt.contract.responsable %></strong> , em nome da empresa
-<strong><%= @receipt.contract.customer.name %></strong>, inscrita no CNPJ:
+<strong><%= @receipt.contract.customer.company_name %></strong>, inscrita no CNPJ:
 <strong><%= @receipt.contract.customer.cnpj %></strong>, declaro ter recebido os equipamentos:
 <% @receipt.contract.equipment.each do |equipment|  %>
   <strong><%= equipment.name %></strong>

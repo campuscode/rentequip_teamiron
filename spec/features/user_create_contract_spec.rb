@@ -9,7 +9,7 @@ feature 'users create contract' do
     visit new_contract_path
 
     fill_in 'Responsável',            with: contract.responsable
-    select customer.name,             from: 'Cliente'
+    select customer.company_name,     from: 'Cliente'
     select 3,                         from: 'Duração'
     check equipment.name
     fill_in 'Valor do Contrato',      with: contract.amount
@@ -20,7 +20,7 @@ feature 'users create contract' do
     expect(page).to have_content contract.responsable
     expect(page).to have_content contract.rental_period
     expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
-    expect(page).to have_content contract.customer.name
+    expect(page).to have_content contract.customer.company_name
     expect(page).to have_content equipment.name
     expect(page).to have_content contract.amount
     expect(page).to have_content contract.delivery_address

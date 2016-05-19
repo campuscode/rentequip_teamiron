@@ -10,7 +10,7 @@
     <% @contracts.each do |contract| %>
       <tr>
         <td> <%= contract.id %></td>
-        <td> <%= contract.customer.try(:name) %></td>
+        <td> <%= contract.customer.try(:company_name) %></td>
         <% if contract.deadline %>
           <td> <%= l contract.deadline, format: :super_short %></td>
         <% else %>

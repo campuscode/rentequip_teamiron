@@ -11,7 +11,7 @@ feature 'user views one contract' do
 
     expect(page).to have_content contract.responsable
     expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
-    expect(page).to have_content contract.customer.name
+    expect(page).to have_content contract.customer.company_name
     expect(page).to have_content contract.equipment.find(1).name
     expect(page).to have_content contract.equipment.find(2).name
     expect(page).to have_content contract.amount

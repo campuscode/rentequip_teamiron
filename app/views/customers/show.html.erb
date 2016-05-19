@@ -1,0 +1,24 @@
+<section id="customer">
+  <h1>Cliente: <%= @customer.company_name %> </h1>
+
+  <p>
+    <strong> CNPJ: </strong>
+    <%= @customer.cnpj %>
+  </p>
+  <p>
+    <strong> Contato: </strong>
+    <%= @customer.contact_name %>
+  </p>
+  <p>
+    <strong> Telefone: </strong>
+    <%= @customer.tel %>
+  </p>
+  <p>
+    <strong> Email do Contato: </strong>
+    <%= @customer.contact_email %>
+  </p>
+  <p>
+    <strong> Endereço de Cobrança: </strong>
+    <%= @customer.billing_address %>
+  </p>
+</section>

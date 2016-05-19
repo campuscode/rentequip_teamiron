@@ -1,0 +1,12 @@
+<% if flash[:error] %>
+  <span class="error_message"><%= flash[:error] %></span>
+<% end %>
+<%= simple_form_for @customer do |f| %>
+  <%= f.input :company_name, label: 'Razão Social' %>
+  <%= f.input :cnpj, label: 'CNPJ' %>
+  <%= f.input :contact_name, label: 'Contato' %>
+  <%= f.input :tel, label: 'Telefone' %>
+  <%= f.input :contact_email, label: 'Email' %>
+  <%= f.input :billing_address, label: 'Endereço de Cobrança' %>
+  <%= f.submit 'Cadastrar Cliente' %>
+<% end %>
