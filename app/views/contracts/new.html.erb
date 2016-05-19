@@ -1,7 +1,14 @@
 <% if flash[:error] %>
   <span class="error_message"><%= flash[:error] %></span>
 <% end %>
-<%= simple_form_for @contract do |f| %>
+<%= simple_form_for(@contract, html: {class: 'form-horizontal'},
+  wrapper: :horizontal_form,
+  wrapper_mappings: {
+    check_boxes: :horizontal_radio_and_checkboxes,
+    radio_buttons: :horizontal_radio_and_checkboxes,
+    file: :horizontal_file_input,
+    boolean: :horizontal_boolean
+  }) do |f| %>
   <%= f.input :responsable, label: 'Responsável' %>
   <%= f.association :customer, label: 'Cliente', label_method: :company_name%>
   <%= f.input :rental_period, collection: [3, 7, 15, 30], label:'Duração', prompt: 'Selecione' %>
