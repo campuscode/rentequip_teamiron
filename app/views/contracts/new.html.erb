@@ -15,6 +15,6 @@
   <%= f.association :equipment, label: 'Equipamentos', as: :check_boxes %>
   <%= f.input :amount, label: 'Valor do Contrato' %>
   <%= f.input :delivery_address, label: 'Endereço de Entrega' %>
-  <%= f.input :started_at, label: 'Data de início', as: :date, html5: true %>
+  <%= f.input :started_at, label: 'Data de início', as: :date, html5: true, wrapper: :horizontal_form %>
   <%= f.submit 'Emitir Contrato' %>
 <% end %>

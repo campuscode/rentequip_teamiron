@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 20160518230943) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "rental_period"
-    t.date     "deadline"
-    t.date     "started_at"
     t.integer  "customer_id"
     t.integer  "receipt_id"
+    t.date     "deadline"
+    t.date     "started_at"
   end
 
   add_index "contracts", ["customer_id"], name: "index_contracts_on_customer_id"
