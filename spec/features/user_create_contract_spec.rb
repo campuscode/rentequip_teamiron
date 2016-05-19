@@ -10,21 +10,23 @@ feature 'users create contract' do
 
     visit new_contract_path
 
-    fill_in 'Responsável', with: contract.responsable
+
+    fill_in 'Responsável',            with: contract.responsable
     select rental_period,             from: 'Duração'
-    select customer.name,             from: 'Cliente'
+    select customer.company_name,     from: 'Cliente'
     check equipment.name
     fill_in 'Valor do Contrato',     with: contract.amount
     fill_in 'Endereço de Entrega',   with: contract.delivery_address
     fill_in 'Data de início',        with: contract.started_at
 
     click_on 'Emitir Contrato'
+    save_and_open_page
 
     expect(page).to have_content contract.responsable
     expect(page).to have_content contract.rental_period
     expect(page).to have_content I18n.l(contract.started_at +
                                         rental_period.days, format: :short)
-    expect(page).to have_content contract.customer.name
+    expect(page).to have_content contract.customer.company_name
     expect(page).to have_content equipment.name
     expect(page).to have_content contract.amount
     expect(page).to have_content contract.delivery_address

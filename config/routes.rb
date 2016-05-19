@@ -5,5 +5,6 @@ Rails.application.routes.draw do
     resources :receipts, only: [:show, :create]
   end
   resources :prices, only: [:index]
+  resources :customers, only: [:new, :create, :show]
 
 end

@@ -16,7 +16,7 @@ feature 'users create receipt' do
 
     expect(page).to have_content 'Recibo de Entrega'
     expect(page).to have_content contract.responsable
-    expect(page).to have_content customer.name
+    expect(page).to have_content customer.company_name
     expect(page).to have_content customer.cnpj
     expect(page).to have_content equipment1.name
     expect(page).to have_content equipment2.name
