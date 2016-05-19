@@ -12,7 +12,7 @@
         <td> <%= contract.id %></td>
         <td> <%= contract.client %></td>
         <% if contract.deadline %>
-          <td> <%= l contract.deadline, format: :super_short %></td>
+          <td> <%= l contract.deadline, format: :short %></td>
         <% else %>
           <td> ---- </td>
         <% end %>

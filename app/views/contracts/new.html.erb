@@ -3,7 +3,7 @@
 <% end %>
 <%= simple_form_for @contract do |f| %>
   <%= f.input :responsable, label: 'Responsável' %>
-  <%= f.input :rental_period, collection: [@collection], label:'Duração', prompt: 'Selecione' %>
+  <%= f.input :rental_period, collection: [3, 7, 15, 30], label:'Duração', prompt: 'Selecione' %>
   <%= f.input :client, label: 'Cliente' %>
   <%= f.association :equipment, label: 'Equipamentos', as: :check_boxes %>
   <%= f.input :amount, label: 'Valor do Contrato' %>

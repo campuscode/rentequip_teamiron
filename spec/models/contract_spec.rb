@@ -1,36 +1,26 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Contract do
   it 'has a valid 3 days deadline' do
-    build(:contract, rental_period: 3, started_at: 2015-12-08)
-    expect(:deadline).to eq(2015-12-11)
+    contract = create(:contract, rental_period: 3, equipment:
+                      [create_equipment], started_at: Time.zone.today)
+    expect(contract.deadline).to eq(Time.zone.today +
+                                    contract.rental_period.days)
   end
-  it 'has a valid 3 days deadline on the following year'
-    build(:contract, started_at: 2015-12-30)
-    expect(:deadline).to eq(2016-01-02)
+
+  it 'has a valid deadline on the starting day' do
+    contract = create(:contract, rental_period: 0, equipment:
+                      [create_equipment], started_at:  Time.zone.today)
+    expect(contract.deadline).to eq(Time.zone.today)
   end
-  it 'has a valid 7 days deadline' do
-    build(:contract, rental_period: 7, started_at: 2015-12-08)
-    expect(:deadline).to eq(2015-12-15)
+
+  it 'has an invalid negative deadline' do
+    contract = create(:contract, rental_period: -1, equipment:
+                      [create_equipment], started_at: Time.zone.today)
+    expect(contract.deadline).to eq(Time.zone.today)
   end
-  it 'has a valid 7 days deadline on the following year'
-    build(:contract, rental_period: 7, started_at: 2015-12-30)
-    expect(:deadline).to eq(2016-01-06)
-  end
-  it 'has a valid 15 days deadline' do
-    build(:contract, rental_period: 15, started_at: 2015-12-01)
-    expect(:deadeline).to eq(2015-12-16)
-  end
-  it 'has a valid 15 days deadline on the following year'
-    build(:contract, rental_period: 15, started_at: 2015-12-30)
-    expect(:deadline).to eq(2016-01-14)
-  end
-  it 'has a valid 30 days deadline' do
-    build(:contract, rental_period: 30,  started_at: 2015-12-01)
-    expect(:deadline).to eq(2015-12-31)
-  end
-  it 'has a valid 30 days deadline on the following year'
-    build(:contract, rental_period: 30, started_at: 2015-12-08)
-    expect(:deadline).to eq(2016-01-07)
+
+  def create_equipment
+    build(:equipment)
   end
 end

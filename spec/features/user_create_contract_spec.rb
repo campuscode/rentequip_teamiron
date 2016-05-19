@@ -6,10 +6,12 @@ feature 'users create contract' do
 
     contract = build(:contract)
 
+    rental_period = 3
+
     visit new_contract_path
 
     fill_in 'Responsável', with: contract.responsable
-    select 3, from: 'Duração'
+    select rental_period, from: 'Duração'
     fill_in 'Cliente', with: contract.client
     check equipment.name
     fill_in 'Valor do Contrato',     with: contract.amount
@@ -20,7 +22,8 @@ feature 'users create contract' do
 
     expect(page).to have_content contract.responsable
     expect(page).to have_content contract.rental_period
-    expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
+    expect(page).to have_content I18n.l(contract.started_at +
+                                        rental_period.days, format: :short)
     expect(page).to have_content contract.client
     expect(page).to have_content equipment.name
     expect(page).to have_content contract.amount

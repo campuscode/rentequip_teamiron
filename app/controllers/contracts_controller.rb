@@ -9,7 +9,6 @@ class ContractsController < ApplicationController
 
   def new
     @contract = Contract.new
-    @collection = [3, 7, 15, 30]
   end
 
   def create

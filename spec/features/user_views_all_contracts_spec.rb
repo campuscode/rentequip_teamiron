@@ -17,15 +17,15 @@ feature 'user views all contracts' do
 
     expect(page).to have_content contract.id
     expect(page).to have_content contract.client
-    expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
+    expect(page).to have_content I18n.l(contract.deadline, format: :short)
 
     expect(page).to have_content contract_2.id
     expect(page).to have_content contract_2.client
-    expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
+    expect(page).to have_content I18n.l(contract.deadline, format: :short)
 
     expect(page).to have_content contract_3.id
     expect(page).to have_content contract_3.client
-    expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
+    expect(page).to have_content I18n.l(contract.deadline, format: :short)
   end
 
   scenario 'user clic on the contract' do
@@ -43,7 +43,7 @@ feature 'user views all contracts' do
     end
 
     expect(page).to have_content contract.responsable
-    expect(page).to have_content I18n.l(contract.deadline, format: :super_short)
+    expect(page).to have_content I18n.l(contract.deadline, format: :short)
     expect(page).to have_content contract.client
     expect(page).to have_content contract.equipment.find(1).name
     expect(page).to have_content contract.amount
