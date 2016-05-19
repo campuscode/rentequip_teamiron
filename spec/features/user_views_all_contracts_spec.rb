@@ -1,40 +1,43 @@
 require 'rails_helper'
 feature 'user views all contracts' do
   scenario 'successfully' do
-    equipment = build(:equipment)
-    equipment2 = build(:equipment, name: 'Marteladeira')
+    equipment = create(:equipment)
 
-    contract = create(:contract, client: 'Tenda',
-                                 equipment: [equipment, equipment2])
+    customer = create(:customer, name: 'Tenda')
+    customer2 = create(:customer, name: 'Tenda2')
+    customer3 = create(:customer, name: 'Tenda3')
 
-    contract_2 = create(:contract, client: 'Tenda 2',
-                                   equipment: [equipment, equipment2])
+    contract = create(:contract, customer: customer, equipment: [equipment])
 
-    contract_3 = create(:contract, client: 'Tenda 3',
-                                   equipment: [equipment])
+    contract_2 = create(:contract, customer: customer2, equipment: [equipment])
+
+    contract_3 = create(:contract, customer: customer3, equipment: [equipment])
 
     visit contracts_path
 
     expect(page).to have_content contract.id
-    expect(page).to have_content contract.client
+    expect(page).to have_content contract.customer.name
     expect(page).to have_content I18n.l(contract.deadline, format: :short)
 
     expect(page).to have_content contract_2.id
-    expect(page).to have_content contract_2.client
+    expect(page).to have_content contract_2.customer.name
     expect(page).to have_content I18n.l(contract.deadline, format: :short)
 
     expect(page).to have_content contract_3.id
-    expect(page).to have_content contract_3.client
+    expect(page).to have_content contract_3.customer.name
     expect(page).to have_content I18n.l(contract.deadline, format: :short)
   end
 
   scenario 'user clic on the contract' do
+    customer = create(:customer)
+
     equipment1 = create(:equipment)
+
     contract = create(:contract, equipment: [equipment1])
 
-    Contract.create(client: 'MVR Engenharia 2')
+    Contract.create(rental_period: 3, customer: customer)
 
-    Contract.create(client: 'MVR Engenharia 2')
+    Contract.create(rental_period: 7, customer: customer)
 
     visit contracts_path
 
@@ -44,7 +47,7 @@ feature 'user views all contracts' do
 
     expect(page).to have_content contract.responsable
     expect(page).to have_content I18n.l(contract.deadline, format: :short)
-    expect(page).to have_content contract.client
+    expect(page).to have_content contract.customer.name
     expect(page).to have_content contract.equipment.find(1).name
     expect(page).to have_content contract.amount
     expect(page).to have_content contract.delivery_address

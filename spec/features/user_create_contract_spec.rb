@@ -3,16 +3,16 @@ require 'rails_helper'
 feature 'users create contract' do
   scenario 'successfully' do
     equipment = create(:equipment)
-
-    contract = build(:contract)
+    customer = create(:customer)
+    contract = build(:contract, customer: customer)
 
     rental_period = 3
 
     visit new_contract_path
 
     fill_in 'Responsável', with: contract.responsable
-    select rental_period, from: 'Duração'
-    fill_in 'Cliente', with: contract.client
+    select rental_period,             from: 'Duração'
+    select customer.name,             from: 'Cliente'
     check equipment.name
     fill_in 'Valor do Contrato',     with: contract.amount
     fill_in 'Endereço de Entrega',   with: contract.delivery_address
@@ -24,7 +24,7 @@ feature 'users create contract' do
     expect(page).to have_content contract.rental_period
     expect(page).to have_content I18n.l(contract.started_at +
                                         rental_period.days, format: :short)
-    expect(page).to have_content contract.client
+    expect(page).to have_content contract.customer.name
     expect(page).to have_content equipment.name
     expect(page).to have_content contract.amount
     expect(page).to have_content contract.delivery_address

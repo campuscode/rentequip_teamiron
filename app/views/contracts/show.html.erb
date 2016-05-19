@@ -11,7 +11,7 @@
   </p>
   <p>
     <strong> Cliente: </strong>
-    <%= @contract.client %>
+    <%= @contract.customer.name %>
   </p>
   <p>
     <strong> Duração: </strong>
@@ -19,9 +19,11 @@
   </p>
   <p>
     <strong> Equipamentos: </strong>
-    <% @contract.equipment.each do |equipment| %>
-      ---------<%= equipment.name%>
-    <% end %>
+    <ul>
+      <% @contract.equipment.each do |equipment| %>
+        <li><%= equipment.name%></li>
+      <% end %>
+    </ul>
   </p>
   <p>
     <strong> Valor Total: </strong>
@@ -35,4 +37,8 @@
     <strong> Data de Início: </strong>
     <%= l @contract.started_at, format: :long %>
   </p>
+</section>
+<section>
+  <%= link_to 'Emitir Recibo de Entrega', contract_receipts_path(@contract),
+       method: :post %>
 </section>

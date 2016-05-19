@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20160518223923) do
 
   create_table "contracts", force: :cascade do |t|
     t.string   "responsable"
-    t.string   "client"
     t.integer  "amount"
     t.string   "delivery_address"
     t.datetime "created_at",       null: false
@@ -23,7 +22,12 @@ ActiveRecord::Schema.define(version: 20160518223923) do
     t.integer  "rental_period"
     t.date     "deadline"
     t.date     "started_at"
+    t.integer  "customer_id"
+    t.integer  "receipt_id"
   end
+
+  add_index "contracts", ["customer_id"], name: "index_contracts_on_customer_id"
+  add_index "contracts", ["receipt_id"], name: "index_contracts_on_receipt_id"
 
   create_table "contracts_equipment", id: false, force: :cascade do |t|
     t.integer "contract_id",  null: false
@@ -33,12 +37,20 @@ ActiveRecord::Schema.define(version: 20160518223923) do
   add_index "contracts_equipment", ["contract_id"], name: "index_contracts_equipment_on_contract_id"
   add_index "contracts_equipment", ["equipment_id"], name: "index_contracts_equipment_on_equipment_id"
 
+  create_table "customers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "cnpj"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "equipment", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.string   "supplier"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "serial_number"
   end
 
   create_table "prices", force: :cascade do |t|
@@ -48,5 +60,13 @@ ActiveRecord::Schema.define(version: 20160518223923) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "receipts", force: :cascade do |t|
+    t.integer  "contract_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "receipts", ["contract_id"], name: "index_receipts_on_contract_id"
 
 end
