@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :contracts, only: [:show, :index, :new, :create] do
     resources :receipts, only: [:show, :create]
   end
-  resources :prices, only: [:index]
+  resources :prices, only: [:index, :new, :create]
   resources :customers, only: [:new, :create, :show]
 
 end

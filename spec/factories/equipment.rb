@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :equipment do
-    name 'Betoneira'
+    name 'Betoneira from factory'
     description 'Semi-nova'
     supplier 'Bosh'
     serial_number '12BC33'

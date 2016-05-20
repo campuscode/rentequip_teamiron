@@ -10,15 +10,15 @@ equipment = Equipment.create(name: 'Furadeira', description: 'Auto Impacto',
 equipment2 = Equipment.create(name: 'Betoneira', description: '120 litros',
                               supplier: 'Nagano')
 customer = Customer.create(company_name: 'MRV', cnpj: '10.654.456/0001-89',
-                            contact_name:'Luiz', tel: '987654312', 
+                            contact_name:'Luiz', tel: '987654312',
                             contact_email: 'luiz@coisa.com',
                             billing_address: 'Av Brigadeiro Luiz Antonio 2020' )
 customer2 = Customer.create(company_name: 'Tenda', cnpj: '15.654.764/0001-90',
                             contact_name:'Renan', tel: '123456789',
                             contact_email: 'alguma@coisa.com',
                             billing_address: 'Av Paulista 2020' )
-price = Price.create(name: 'Banana', duration: 3, total_value: 1000)
-price2 = Price.create(name: 'Abacaxi', duration: 7, total_value: 2000)
+price = Price.create(equipment: equipment, duration: 3, total_value: 1000)
+price2 = Price.create(equipment: equipment2, duration: 7, total_value: 2000)
 contract = Contract.create(responsable: 'Paulo', amount: 2000,
                             delivery_address: 'Av. Paulista', rental_period: 3,
                             customer: customer, equipment: [equipment])

@@ -20,8 +20,7 @@ feature 'users create contract' do
     fill_in 'Data de início',        with: contract.started_at
 
     click_on 'Emitir Contrato'
-    save_and_open_page
-
+    
     expect(page).to have_content contract.responsable
     expect(page).to have_content contract.rental_period
     expect(page).to have_content I18n.l(contract.started_at +
