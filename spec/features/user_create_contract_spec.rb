@@ -2,14 +2,16 @@ require 'rails_helper'
 
 feature 'users create contract' do
   scenario 'successfully' do
+    user = create(:user)
     equipment = create(:equipment)
     customer = create(:customer)
     contract = build(:contract, customer: customer)
 
     rental_period = 3
 
-    visit new_contract_path
+    login_as(user)
 
+    visit new_contract_path
 
     fill_in 'Responsável',            with: contract.responsable
     select rental_period,             from: 'Duração'
@@ -20,7 +22,7 @@ feature 'users create contract' do
     fill_in 'Data de início',        with: contract.started_at
 
     click_on 'Emitir Contrato'
-    
+
     expect(page).to have_content contract.responsable
     expect(page).to have_content contract.rental_period
     expect(page).to have_content I18n.l(contract.started_at +
@@ -45,10 +47,19 @@ feature 'users create contract' do
   end
 
   scenario 'users create blank contract' do
+    user = create(:user)
+    login_as(user)
+
     visit new_contract_path
 
     click_on 'Emitir Contrato'
 
     expect(page).to have_content 'Favor preencher os campos obrigatórios'
+  end
+
+  scenario 'must be authenticated' do
+    visit new_contract_path
+
+    expect(current_path).to eq(new_user_session_path)
   end
 end

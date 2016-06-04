@@ -1,4 +1,6 @@
 class ContractsController < ApplicationController
+  before_action :authenticate_user!, only: [:new]
+
   def show
     @contract = Contract.find(params[:id])
   end
