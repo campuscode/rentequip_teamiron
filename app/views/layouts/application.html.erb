@@ -22,12 +22,19 @@
             <li><%= link_to 'Equipamentos',equipment_index_path %> </li>
             <li><%= link_to 'Cadastrar Novo Preço', new_price_path %> </li>
             <li><%= link_to 'Preços', prices_path %> </li>
+            <% if user_signed_in? %>
+              <li><span>Olá <%= current_user.email %></span></li>
+            <% else %>
+              <li><%= link_to 'Entrar', new_user_session_path %></li>
+            <% end %>
           </ul>
         </div>
       </div>
     </nav>
 
     <div class="container">
+      <%= notice  %>
+      <%= alert  %>
       <%= yield %>
     </div>
   </body>
